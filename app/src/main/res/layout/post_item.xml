@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        tools:layout_editor_absoluteX="122dp"
+        tools:layout_editor_absoluteY="88dp"
+        tools:text="Username" />
+
+    <ImageView
+        android:id="@+id/ivPic"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_below="@+id/tvUser"
+        android:layout_marginTop="0dp"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="154dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPic"
+        android:layout_marginTop="0dp"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="377dp"
+        tools:text="Caption Here" />
+</RelativeLayout>

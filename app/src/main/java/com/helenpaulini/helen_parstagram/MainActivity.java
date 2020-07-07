@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
+                goFeedActivity();
             }
         });
 
@@ -89,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void goLoginActivity(){
         Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void goFeedActivity(){
+        Log.i(TAG, "hit submit");
+        Intent i = new Intent(this, FeedActivity.class);
         startActivity(i);
         finish();
     }

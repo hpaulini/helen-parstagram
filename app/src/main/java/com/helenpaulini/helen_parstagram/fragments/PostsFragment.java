@@ -7,11 +7,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.helenpaulini.helen_parstagram.Post;
 import com.helenpaulini.helen_parstagram.PostsAdapter;
@@ -19,6 +21,8 @@ import com.helenpaulini.helen_parstagram.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +35,14 @@ import java.util.List;
 public class PostsFragment extends Fragment {
 
     public static final String TAG = "PostsFragment";
+    public static final int LIMIT = 20;
+
+    private String client;
     private RecyclerView rvFeed;
     protected PostsAdapter adapter;
     protected List<Post> postList;
+
+    private SwipeRefreshLayout swipeContainer;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,22 +96,59 @@ public class PostsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rvFeed = view.findViewById(R.id.rvFeed);
         postList = new ArrayList<>();
-        adapter = new PostsAdapter(getContext(), postList);
 
-        //create a layout for one row in the list
         //create the adapter
-        //create the data source
+        adapter = new PostsAdapter(getContext(), postList);
         //set the adapter on the recycler view
         rvFeed.setAdapter(adapter);
         //set the layout on the recycler view
         rvFeed.setLayoutManager(new LinearLayoutManager(getContext()));
         queryPosts();
+
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshPosts();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
     }
+
+    protected void refreshPosts(){
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        query.setLimit(LIMIT);
+        query.addDescendingOrder(Post.KEY_CREATED_AT);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if(e!=null){
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for(Post post : posts){
+                    Log.i(TAG, "Post: "+post.getDescription() +", username: "+post.getUser().getUsername());
+                }
+                adapter.clear();
+                adapter.addAll(posts);
+                swipeContainer.setRefreshing(false);
+                Log.i(TAG, "after refresh");
+            }
+        });
+    }
+
 
     protected void queryPosts(){
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
-        query.setLimit(20);
+        query.setLimit(LIMIT);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Post>() {
             @Override

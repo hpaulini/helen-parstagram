@@ -22,20 +22,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.helenpaulini.helen_parstagram.FeedActivity;
-import com.helenpaulini.helen_parstagram.LoginActivity;
-import com.helenpaulini.helen_parstagram.MainActivity;
 import com.helenpaulini.helen_parstagram.Post;
 import com.helenpaulini.helen_parstagram.R;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -140,7 +134,7 @@ public class ComposeFragment extends Fragment {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
-                //goFeedActivity();
+                //goPostsFragment();
             }
         });
 
@@ -159,9 +153,9 @@ public class ComposeFragment extends Fragment {
 //        finish();
 //    }
 //
-//    private void goFeedActivity(){
+//    private void goPostsFragment(){
 //        Log.i(TAG, "hit submit");
-//        Intent i = new Intent(this, FeedActivity.class);
+//        Intent i = new Intent(this, PostsFragment.class);
 //        startActivity(i);
 //        finish();
 //    }

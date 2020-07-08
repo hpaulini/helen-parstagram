@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.helenpaulini.helen_parstagram.fragments.ComposeFragment;
+import com.helenpaulini.helen_parstagram.fragments.PostsFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -54,18 +55,17 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        // TODO: update fragment
-                        Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
-                        fragment = new ComposeFragment();
+                        //Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
+                        fragment = new PostsFragment();
                         break;
                     case R.id.action_compose:
-                        Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
                         fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
                     default:
                         // TODO: update fragment
-                        Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
                         fragment = new ComposeFragment();
                         break;
                 }

@@ -57,9 +57,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvUser;
-        TextView tvCaption;
-        ImageView ivPic;
+        private TextView tvUser;
+        private TextView tvCaption;
+        private ImageView ivPic;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

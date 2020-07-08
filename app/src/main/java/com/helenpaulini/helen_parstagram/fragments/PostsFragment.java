@@ -32,8 +32,8 @@ public class PostsFragment extends Fragment {
 
     public static final String TAG = "PostsFragment";
     private RecyclerView rvFeed;
-    private PostsAdapter adapter;
-    private List<Post> postList;
+    protected PostsAdapter adapter;
+    protected List<Post> postList;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,7 +99,7 @@ public class PostsFragment extends Fragment {
         queryPosts();
     }
 
-    public void queryPosts(){
+    protected void queryPosts(){
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(20);

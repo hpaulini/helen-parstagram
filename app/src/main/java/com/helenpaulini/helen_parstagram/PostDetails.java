@@ -71,15 +71,23 @@ public class PostDetails extends AppCompatActivity {
             } else if (diff < 2 * MINUTE_MILLIS) {
                 return "a minute ago";
             } else if (diff < 50 * MINUTE_MILLIS) {
-                return diff / MINUTE_MILLIS + " m";
+                    return diff / MINUTE_MILLIS + " minutes ago";
             } else if (diff < 90 * MINUTE_MILLIS) {
                 return "an hour ago";
             } else if (diff < 24 * HOUR_MILLIS) {
-                return diff / HOUR_MILLIS + " h";
+                if(diff / HOUR_MILLIS == 1){
+                    return "an hour ago";
+                } else{
+                    return diff / HOUR_MILLIS + " hours ago";
+                }
             } else if (diff < 48 * HOUR_MILLIS) {
                 return "yesterday";
             } else {
-                return diff / DAY_MILLIS + " d";
+                if(diff / DAY_MILLIS == 1){
+                    return "yesterday";
+                } else {
+                    return diff / DAY_MILLIS + " days ago";
+                }
             }
         } catch (ParseException e) {
             Log.i(TAG, "getRelativeTimeAgo failed");

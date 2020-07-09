@@ -5,8 +5,11 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
+@Parcel(analyze={Post.class})
 @ParseClassName("Post")
 public class Post extends ParseObject {
 
@@ -14,6 +17,9 @@ public class Post extends ParseObject {
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_AT = "createdAt";
+
+    //empty constructor for parceler
+    public Post() {}
 
     public String getDescription(){
         return getString(KEY_DESCRIPTION);
@@ -39,9 +45,9 @@ public class Post extends ParseObject {
         put(KEY_USER, user);
     }
 
-    public Date getCreatedAt(){
-        return getDate(KEY_CREATED_AT);
-    }
+//    public Date getCreatedAt(){
+//        return getDate(KEY_CREATED_AT);
+//    }
 
     public void setCreatedAt(Date createdAt){
         put(KEY_CREATED_AT, createdAt);

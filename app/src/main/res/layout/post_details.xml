@@ -6,6 +6,49 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/ivPic"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@drawable/ufi_heart"
+        android:tint="#222324"/>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/ivPic"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/imageView6"
+        app:srcCompat="@drawable/ufi_comment"
+        android:tint="#222324"/>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/ivPic"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/imageView7"
+        app:srcCompat="@drawable/ufi_new_direct"
+        android:tint="#222324"/>
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/ivPic"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="0dp"
+        app:srcCompat="@drawable/ufi_save"
+        android:tint="#222324"/>
+
     <TextView
         android:id="@+id/tvUser"
         android:layout_width="match_parent"
@@ -24,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_below="@+id/tvUser"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="16dp"
         android:scaleType="centerCrop"
         tools:layout_editor_absoluteX="90dp"
         tools:layout_editor_absoluteY="154dp"
@@ -34,7 +77,7 @@
         android:id="@+id/tvCaption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPic"
+        android:layout_below="@+id/imageView8"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         tools:layout_editor_absoluteX="104dp"

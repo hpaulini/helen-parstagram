@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.helenpaulini.helen_parstagram.LoginActivity;
 import com.helenpaulini.helen_parstagram.Post;
 import com.helenpaulini.helen_parstagram.R;
 import com.parse.ParseException;
@@ -134,7 +135,6 @@ public class ComposeFragment extends Fragment {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
-                //goPostsFragment();
             }
         });
 
@@ -143,22 +143,16 @@ public class ComposeFragment extends Fragment {
             public void onClick(View view) {
                 ParseUser.logOut();
                 ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
-                //goLoginActivity();
+                goLoginActivity();
             }
         });
     }
-//    private void goLoginActivity(){
-//        Intent i = new Intent(this, LoginActivity.class);
-//        startActivity(i);
-//        finish();
-//    }
-//
-//    private void goPostsFragment(){
-//        Log.i(TAG, "hit submit");
-//        Intent i = new Intent(this, PostsFragment.class);
-//        startActivity(i);
-//        finish();
-//    }
+
+    private void goLoginActivity(){
+        Intent i = new Intent(getContext(), LoginActivity.class);
+        startActivity(i);
+        getActivity().finish();
+    }
 
     private void launchCamera(){
         // create Intent to take a picture and return control to the calling application

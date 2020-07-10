@@ -48,7 +48,7 @@ public class ComposeFragment extends Fragment {
     private Button btnSubmit;
     private ImageView ivPostImage;
     private Button btnTakePic;
-    private Button btnLogout;
+    //private Button btnLogout;
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -110,7 +110,7 @@ public class ComposeFragment extends Fragment {
         btnSubmit = view.findViewById(R.id.btnSubmit);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnTakePic = view.findViewById(R.id.btnTakePic);
-        btnLogout = view.findViewById(R.id.btnLogout);
+        //btnLogout = view.findViewById(R.id.btnLogout);
 
         btnTakePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,21 +138,21 @@ public class ComposeFragment extends Fragment {
             }
         });
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseUser.logOut();
-                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
-                goLoginActivity();
-            }
-        });
+//        btnLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ParseUser.logOut();
+//                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+//                goLoginActivity();
+//            }
+//        });
     }
 
-    private void goLoginActivity() {
-        Intent i = new Intent(getContext(), LoginActivity.class);
-        startActivity(i);
-        getActivity().finish();
-    }
+//    private void goLoginActivity() {
+//        Intent i = new Intent(getContext(), LoginActivity.class);
+//        startActivity(i);
+//        getActivity().finish();
+//    }
 
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application

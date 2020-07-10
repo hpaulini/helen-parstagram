@@ -13,8 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.helenpaulini.helen_parstagram.EndlessRecyclerViewScrollListener;
 import com.helenpaulini.helen_parstagram.Post;
 import com.helenpaulini.helen_parstagram.PostsAdapter;
 import com.helenpaulini.helen_parstagram.R;
@@ -25,6 +27,7 @@ import com.parse.ParseQuery;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,8 +44,8 @@ public class PostsFragment extends Fragment {
     private RecyclerView rvFeed;
     protected PostsAdapter adapter;
     protected List<Post> postList;
-
     private SwipeRefreshLayout swipeContainer;
+    private EndlessRecyclerViewScrollListener scrollListener;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,8 +105,19 @@ public class PostsFragment extends Fragment {
         //set the adapter on the recycler view
         rvFeed.setAdapter(adapter);
         //set the layout on the recycler view
-        rvFeed.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rvFeed.setLayoutManager(linearLayoutManager);
         queryPosts();
+
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+                @Override
+                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                    Log.i(TAG, "onLoadMore "+page);
+                    loadMoreData(page);
+                }
+        };
+
+        rvFeed.addOnScrollListener(scrollListener);
 
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
@@ -118,7 +132,28 @@ public class PostsFragment extends Fragment {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+    }
 
+    public void loadMoreData(int offset) {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        query.setLimit(LIMIT);
+        query.addDescendingOrder(Post.KEY_CREATED_AT);
+        query.setSkip(offset*LIMIT);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if(e!=null){
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for(Post post : posts){
+                    Log.i(TAG, "Post: "+post.getDescription() +", username: "+post.getUser().getUsername());
+                }
+                postList.addAll(posts);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     protected void refreshPosts(){

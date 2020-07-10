@@ -7,13 +7,22 @@
     android:layout_margin="0dp">
 
     <TextView
+        android:id="@+id/tvDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCaption"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        tools:text="April 5, 2020" />
+
+    <TextView
         android:id="@+id/tvUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="0dp"
         android:layout_toStartOf="@+id/imageView13"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -39,6 +48,7 @@
         android:layout_below="@+id/imageView4"
         android:layout_alignParentStart="true"
         android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         tools:layout_editor_absoluteX="104dp"
         tools:layout_editor_absoluteY="377dp"
         tools:text="Caption Here" />

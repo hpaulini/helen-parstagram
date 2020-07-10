@@ -110,11 +110,11 @@ public class PostsFragment extends Fragment {
         queryPosts();
 
         scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
-                @Override
-                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                    Log.i(TAG, "onLoadMore "+page);
-                    loadMoreData(page);
-                }
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                Log.i(TAG, "onLoadMore " + page);
+                loadMoreData(page);
+            }
         };
 
         rvFeed.addOnScrollListener(scrollListener);
@@ -139,16 +139,16 @@ public class PostsFragment extends Fragment {
         query.include(Post.KEY_USER);
         query.setLimit(LIMIT);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
-        query.setSkip(offset*LIMIT);
+        query.setSkip(offset * LIMIT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e!=null){
+                if (e != null) {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                for(Post post : posts){
-                    Log.i(TAG, "Post: "+post.getDescription() +", username: "+post.getUser().getUsername());
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
                 postList.addAll(posts);
                 adapter.notifyDataSetChanged();
@@ -156,7 +156,7 @@ public class PostsFragment extends Fragment {
         });
     }
 
-    protected void refreshPosts(){
+    protected void refreshPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(LIMIT);
@@ -164,12 +164,12 @@ public class PostsFragment extends Fragment {
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e!=null){
+                if (e != null) {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                for(Post post : posts){
-                    Log.i(TAG, "Post: "+post.getDescription() +", username: "+post.getUser().getUsername());
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
                 adapter.clear();
                 adapter.addAll(posts);
@@ -179,7 +179,7 @@ public class PostsFragment extends Fragment {
         });
     }
 
-    protected void queryPosts(){
+    protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(LIMIT);
@@ -187,12 +187,12 @@ public class PostsFragment extends Fragment {
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e!=null){
+                if (e != null) {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                for(Post post : posts){
-                    Log.i(TAG, "Post: "+post.getDescription() +", username: "+post.getUser().getUsername());
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
                 postList.addAll(posts);
                 adapter.notifyDataSetChanged();

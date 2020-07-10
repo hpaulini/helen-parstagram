@@ -49,7 +49,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     // Involves populating data into the item through holder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Log.d(TAG, "onBindViewHolder"+position);
+        Log.d(TAG, "onBindViewHolder" + position);
         // Get the movie at the position
         Post post = posts.get(position);
         //Bind the movie data into the view holder
@@ -74,7 +74,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private static final int SECOND_MILLIS = 1000;
         private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;
@@ -126,15 +126,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 } else if (diff < 90 * MINUTE_MILLIS) {
                     return "an hour ago";
                 } else if (diff < 24 * HOUR_MILLIS) {
-                    if(diff / HOUR_MILLIS == 1){
+                    if (diff / HOUR_MILLIS == 1) {
                         return "an hour ago";
-                    } else{
+                    } else {
                         return diff / HOUR_MILLIS + " hours ago";
                     }
                 } else if (diff < 48 * HOUR_MILLIS) {
                     return "yesterday";
                 } else {
-                    if(diff / DAY_MILLIS == 1){
+                    if (diff / DAY_MILLIS == 1) {
                         return "yesterday";
                     } else {
                         return diff / DAY_MILLIS + " days ago";

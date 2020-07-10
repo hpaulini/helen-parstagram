@@ -71,19 +71,19 @@ public class PostDetails extends AppCompatActivity {
             } else if (diff < 2 * MINUTE_MILLIS) {
                 return "a minute ago";
             } else if (diff < 50 * MINUTE_MILLIS) {
-                    return diff / MINUTE_MILLIS + " minutes ago";
+                return diff / MINUTE_MILLIS + " minutes ago";
             } else if (diff < 90 * MINUTE_MILLIS) {
                 return "an hour ago";
             } else if (diff < 24 * HOUR_MILLIS) {
-                if(diff / HOUR_MILLIS == 1){
+                if (diff / HOUR_MILLIS == 1) {
                     return "an hour ago";
-                } else{
+                } else {
                     return diff / HOUR_MILLIS + " hours ago";
                 }
             } else if (diff < 48 * HOUR_MILLIS) {
                 return "yesterday";
             } else {
-                if(diff / DAY_MILLIS == 1){
+                if (diff / DAY_MILLIS == 1) {
                     return "yesterday";
                 } else {
                     return diff / DAY_MILLIS + " days ago";

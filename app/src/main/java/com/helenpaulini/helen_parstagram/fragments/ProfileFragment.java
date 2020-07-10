@@ -15,7 +15,7 @@ public class ProfileFragment extends PostsFragment {
     public static final int LIMIT = 20;
 
     @Override
-    protected void queryPosts(){
+    protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
@@ -24,12 +24,12 @@ public class ProfileFragment extends PostsFragment {
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e!=null){
+                if (e != null) {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                for(Post post : posts){
-                    Log.i(TAG, "Post: "+post.getDescription() +", username: "+post.getUser().getUsername());
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
                 postList.addAll(posts);
                 adapter.notifyDataSetChanged();

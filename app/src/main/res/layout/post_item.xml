@@ -8,12 +8,14 @@
 
     <TextView
         android:id="@+id/tvUser"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/imageView13"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:layout_editor_absoluteX="122dp"
         tools:layout_editor_absoluteY="88dp"
@@ -24,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_below="@+id/tvUser"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
         tools:layout_editor_absoluteX="90dp"
         tools:layout_editor_absoluteY="154dp"
@@ -48,8 +50,8 @@
         android:layout_below="@+id/ivPic"
         android:layout_alignParentStart="true"
         android:layout_marginTop="16dp"
-        app:srcCompat="@drawable/ufi_heart"
-        android:tint="#222324"/>
+        android:tint="#222324"
+        app:srcCompat="@drawable/ufi_heart" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -59,8 +61,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_toEndOf="@+id/imageView2"
-        app:srcCompat="@drawable/ufi_comment"
-        android:tint="#222324"/>
+        android:tint="#222324"
+        app:srcCompat="@drawable/ufi_comment" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -70,8 +72,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_toEndOf="@+id/imageView3"
-        app:srcCompat="@drawable/ufi_new_direct"
-        android:tint="#222324"/>
+        android:tint="#222324"
+        app:srcCompat="@drawable/ufi_new_direct" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -81,6 +83,16 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="0dp"
-        app:srcCompat="@drawable/ufi_save"
-        android:tint="#222324"/>
+        android:tint="#222324"
+        app:srcCompat="@drawable/ufi_save" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="0dp"
+        app:srcCompat="@drawable/ufi_more" />
 </RelativeLayout>

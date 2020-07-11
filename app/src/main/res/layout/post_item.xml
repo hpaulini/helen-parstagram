@@ -19,12 +19,12 @@
         android:id="@+id/tvUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="0dp"
         android:layout_toStartOf="@+id/imageView13"
+        android:layout_toEndOf="@+id/imageView16"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:layout_editor_absoluteX="122dp"
         tools:layout_editor_absoluteY="88dp"
@@ -105,4 +105,14 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="0dp"
         app:srcCompat="@drawable/ufi_more" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/unnamed" />
+
 </RelativeLayout>

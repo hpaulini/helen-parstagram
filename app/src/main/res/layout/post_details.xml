@@ -67,7 +67,7 @@
     <ImageView
         android:id="@+id/ivPic"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_below="@+id/tvUser"
         android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
